@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>支付测试 - yy199.cn</title>
+  <style>
+    body { font-family: Arial; max-width: 400px; margin: 50px auto; padding: 20px; }
+    .pay-box { border: 1px solid #eee; padding: 20px; border-radius: 8px; text-align: center; }
+    button { padding: 12px 30px; background: #1677ff; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+    button:hover { background: #4096ff; }
+  </style>
+</head>
+<body>
+  <div class="pay-box">
+    <h3>支付 0.01 元测试</h3>
+    <p>点击下方按钮跳转到支付宝支付</p>
+    <button id="payBtn">立即支付 0.01 元</button>
+  </div>
+
+  <script>
+    const payBtn = document.getElementById('payBtn');
+    // 替换成你的阿里云函数地址！
+    const PAY_API = 'https://alipay-poclildbpd.cn-hangzhou.fcapp.run';
+
+    payBtn.addEventListener('click', async () => {
+      try {
+        const res = await fetch(PAY_API, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ type: 'alipay', money: 0.01 })
+        });
+        if (res.redirected) {
+          window.location.href = res.url;
+        }
+      } catch (err) {
+        alert('支付请求失败，请重试');
+        console.error(err);
+      }
+    });
+  </script>
+</body>
+</html>
