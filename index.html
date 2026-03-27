@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <title>董一样网络技术工作室</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 微软雅黑, sans-serif; }
-        body { max-width: 800px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
+<head>    
+<meta charset="UTF-8">    
+<title>董一样网络技术工作室</title>    
+<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 微软雅黑, sans-serif; }        
+body { max-width: 800px; margin: 0 auto; padding: 20px; background: #f5f5f5; }
         .header { text-align: center; padding: 20px; background: #fff; border-radius: 8px; margin-bottom: 20px; }
         .header h1 { color: #333; font-size: 24px; }
         .header p { color: #666; margin-top: 5px; }
@@ -21,77 +21,88 @@
         .pay-method { display: flex; align-items: center; padding: 15px; border: 1px solid #007bff; border-radius: 4px; margin-bottom: 15px; }
         .pay-method img { width: 40px; height: 40px; margin-right: 15px; }
         .pay-method span { font-size: 16px; color: #333; }
-        .submit-pay { background: #007bff; color: #fff; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; width: 100%; }
-    </style>
+        .submit-pay { background: #007bff; color: #fff; border: none; padding: 12px 20px; border-radius: 4px; cursor: pointer; font-size: 16px; width: 100%; }    
+</style>
 </head>
-<body>
-    <!-- 首页 -->
-    <div class="header">
-        <h1>董一样网络技术工作室</h1>
-        <p>专注于网络技术服务、网站建设与知识分享</p>
-        <p class="domain">官网：yy199.cn</p> <!-- 替换成你的备案域名 -->
-    </div>
+<body>    
+<!-- 首页 -->    
+<div class="header">        
+<h1>董一样网络技术工作室</h1>        
+<p>专注于网络技术服务、网站建设与知识分享</p>        
+<p class="domain">官网：yy199.cn</p>   
+</div>
 
-    <!-- 服务价格页 -->
-    <div class="section">
-        <h2>服务项目与价格</h2>
-        <div class="service-item">
-            <span class="service-name">企业官网建设</span>
-            <span class="service-price">¥2000/个</span>
-        </div>
-        <div class="service-item">
-            <span class="service-name">技术咨询服务</span>
-            <span class="service-price">¥200/小时</span>
-        </div>
-        <div class="service-item">
-            <span class="service-name">域名/服务器托管</span>
-            <span class="service-price">¥100/年</span>
-        </div>
-        <button class="pay-btn" onclick="showPayPage()">立即下单</button>
-    </div>
+<!-- 服务价格页 -->    
+<div class="section">        
+<h2>服务项目与价格</h2>        
+<div class="service-item">            
+<span class="service-name">企业官网建设</span>            
+<span class="service-price">¥2000/个</span>        
+</div>        
+<div class="service-item">            
+<span class="service-name">技术咨询服务</span>            
+<span class="service-price">¥200/小时</span>        
+</div>        
+<div class="service-item">            
+<span class="service-name">域名/服务器托管</span>            
+<span class="service-price">¥100/年</span>        
+</div>        
+<button class="pay-btn" onclick="showPayPage()">立即下单</button>    
+</div>
 
-    <!-- 支付页 -->
-    <div class="pay-page" id="payPage" style="display: none;">
-        <h2>订单支付</h2>
-        <div class="order-info">
-            <p><strong>服务项目：</strong>企业官网建设</p>
-            <p><strong>订单金额：</strong>¥2000.00</p>
-            <p><strong>订单编号：</strong>DY20260320001</p>
-        </div>
-        <h3>选择支付方式</h3>
-        <div class="pay-method">
-            <img src="https://gw.alipayobjects.com/zos/rmsportal/XuVpGqBFxXplzvLjJBZB.svg" alt="支付宝">
-            <span>支付宝支付</span>
-        </div>
-        <button class="submit-pay">确认支付（跳转到支付宝）</button>
-    </div>
+<!-- 支付页 -->    
+<div class="pay-page" id="payPage" style="display: none;">        
+<h2>订单支付</h2>        
+<div class="order-info">            
+<p><strong>服务项目：</strong>企业官网建设</p>            
+<p><strong>订单金额：</strong>¥2000.00</p>            
+<p><strong>订单编号：</strong>DY20260320001</p>        
+</div>        
 
-    <script>
-        function showPayPage() {
-            document.getElementById('payPage').style.display = 'block';
-            window.scrollTo(0, document.body.scrollHeight);
-        }
-    </script>
-<div style="width:100%; text-align:center; font-size:12px; color:#999; padding:12px 0; border-top:1px solid #eee; margin-top:30px;">
+<h3>选择支付方式</h3>        
+<div class="pay-method">            
+<img src="https://gw.alipayobjects.com/zos/rmsportal/XuVpGqBFxXplzvLjJBZB.svg" alt="支付宝">            
+<span>支付宝支付</span>        
+</div>
 
-  <!-- ICP 备案号 ← 你只改这里 -->
-  <a href="https://beian.miit.gov.cn/" target="_blank" style="color:#999; text-decoration:none; margin:0 8px;">
-    浙ICP备2026015655号
-  </a>
+<button id="payBtn" class="submit-pay">确认支付（跳转到支付宝）</button>    
+</div>
 
-  <span style="color:#ccc;">|</span>
+<script>
+// 显示支付页
+function showPayPage() {
+  document.getElementById("payPage").style.display = "block";
+}
 
-  <!-- 公安备案 ← 我已经帮你放好官方给的代码了！ -->
-  <a href="https://beian.mps.gov.cn/#/query/webSearch?code=33038302330989" rel="noreferrer" target="_blank" style="color:#999; text-decoration:none; margin:0 8px;">
-    <img src="https://www.beian.gov.cn/img/ga.png" style="width:16px; vertical-align:middle; margin-right:4px;">
-    浙公网安备33038302330989号
-  </a>
+// 支付按钮
+const payBtn = document.getElementById('payBtn');
+const PAY_API = "https://alipay-poclildbpd.cn-hangzhou.fcapp.run";
 
-  <span style="color:#ccc;">|</span>
-
-  <!-- 主体信息 -->
-  <span style="margin:0 8px;">龙港董一样网络技术工作室 版权所有</span>
-
-</div>    
+payBtn.onclick = async () => {
+  payBtn.disabled = true;
+  payBtn.innerText = "跳转中...";
+  
+  try {
+    const res = await fetch(PAY_API, {
+      method: "POST",
+      mode: "cors",
+      headers: { "Content-Type": "application/json" },
+      body: "{}"
+    });
+    
+    const data = await res.json();
+    if (data.payUrl) {
+      window.location.href = data.payUrl;
+    } else {
+      alert("获取支付链接失败");
+    }
+  } catch (err) {
+    alert("支付请求出错：" + err.message);
+  } finally {
+    payBtn.disabled = false;
+    payBtn.innerText = "确认支付（跳转到支付宝）";
+  }
+};
+</script>
 </body>
 </html>
