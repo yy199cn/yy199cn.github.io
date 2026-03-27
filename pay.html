@@ -19,7 +19,8 @@
 
 <script>
 const payBtn = document.getElementById('payBtn');
-const PAY_API = 'https://alipay-poclilidbpd.cn-hangzhou.fcapp.run';
+// 这里是你云函数里正确的地址！
+const PAY_API = 'https://alipay-poclildbpd.cn-hangzhou.fcapp.run';
 
 payBtn.addEventListener('click', async function() {
   this.disabled = true;
