@@ -2,39 +2,49 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>支付宝支付</title>
+<title>支付测试 - yy199.cn</title>
 <style>
-body{background:#f5f5f5;font-family:微软雅黑}
-.pay{max-width:400px;margin:50px auto;background:#fff;padding:30px;border-radius:12px;text-align:center}
-button{width:100%;height:48px;background:#007AFF;color:#fff;border:none;border-radius:8px;font-size:16px;margin-top:20px}
+  body { font-family: Arial; max-width: 400px; margin: 50px auto; padding: 20px; }
+  .pay-box { border: 1px solid #eee; padding: 20px; border-radius: 8px; text-align: center; }
+  button { padding: 12px 30px; background: #1677ff; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+  button:hover { background: #4096ff; }
 </style>
 </head>
 <body>
-<div class="pay">
-  <h2>支付宝支付 0.01 元</h2>
-  <button id="pay">立即支付</button>
+<div class="pay-box">
+  <h3>支付 0.01 元测试</h3>
+  <p>点击下方按钮跳转到支付宝支付</p>
+  <button id="payBtn">立即支付 0.01 元</button>
 </div>
 
 <script>
-const btn = document.getElementById('pay');
-btn.onclick = async () => {
-  btn.disabled = true;
-  btn.innerText = "跳转中...";
+const payBtn = document.getElementById('payBtn');
+const PAY_API = 'https://alipay-poclilidbpd.cn-hangzhou.fcapp.run';
+
+payBtn.addEventListener('click', async function() {
+  this.disabled = true;
+  this.textContent = '跳转中...';
   try {
-    const r = await fetch("https://alipay-poclilidbpd.cn-hangzhou.fcapp.run", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: "{}"
+    let response = await fetch(PAY_API, {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({})
     });
-    const d = await r.json();
-    if (d.payUrl) location.href = d.payUrl;
-  } catch (e) {
-    alert("支付失败");
+    let data = await response.json();
+    if (data.payUrl) {
+      window.location.href = data.payUrl;
+    } else {
+      alert('获取支付链接失败');
+    }
+  } catch (err) {
+    console.error(err);
+    alert('支付请求出错：' + err.message);
   } finally {
-    btn.disabled = false;
-    btn.innerText = "立即支付";
+    this.disabled = false;
+    this.textContent = '立即支付 0.01 元';
   }
-};
+});
 </script>
 </body>
 </html>
